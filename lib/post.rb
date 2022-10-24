@@ -1,7 +1,17 @@
+require "date"
+
 class Post
   def initialize
     @created_at = Time.now
     @text = nil
+  end
+
+  def self.post_types 
+    [Memo, Link, Task]
+  end
+
+  def self.create(index_type)
+    post_types[index_type].new
   end
 
   def read_from_console 
@@ -13,7 +23,7 @@ class Post
   end 
 
   def file_path 
-    current_path = File.dirname(__FILE__)
+    current_path = File.dirname(__dir__ + "../")
 
     file_name = @created_at.strftime("#{self.class.name}_%Y-%m-%d_%H-%M-%S.txt")
 
@@ -21,7 +31,8 @@ class Post
   end
   
   def save 
-    file = File.now(file_path)
+
+    file = File.new(file_path, "w:UTF-8")
 
     to_strings.each {|item| file.puts(item)}
 
