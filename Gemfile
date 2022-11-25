@@ -1,5 +1,5 @@
 source "http://rubygems.org"
 
-group test do 
-  "rspec", "~> 3.10"
+group :test do 
+  gem "rspec", "~> 3.10"
 end 

@@ -24,7 +24,6 @@ class Post
         puts "Такой id #{id} не найден в базе :("
         return nil
       else
-       
         result = result[0]
         post = create(result["type"])
         post.load_data(result)
@@ -58,7 +57,9 @@ class Post
 
     file_name = @created_at.strftime("#{self.class.name}_%Y-%m-%d_%H-%M-%S.txt")
 
-    return current_path + "/" + file_name
+    current_file_name = current_path + "/" + file_name
+
+    return current_file_name
   end
 
   def load_data(data_hash)
